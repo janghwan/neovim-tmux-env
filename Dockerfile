@@ -78,7 +78,11 @@ RUN apt-get install -y \
       pkg-config \
       python3 \
       python3-pip \
-      unzip
+      unzip \
+      php
+
+RUN curl --silent --show-error https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
 
 #RUN pip3 install --upgrade pip &&\ 
 #    pip3 install --user neovim jedi mistune psutil setproctitle
