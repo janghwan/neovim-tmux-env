@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y \
       tmux \
       tzdata \
       wget \
+      gosu \
       zsh
 RUN chsh -s /usr/bin/zsh
 
@@ -94,5 +95,10 @@ WORKDIR /root
 COPY .vimrc /root/.config/nvim/init.vim
 COPY .zshrc /root
 COPY .tmux.conf /root
+
+RUN vim +PluginInstall +qall --headless
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 CMD ["zsh"]

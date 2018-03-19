@@ -8,7 +8,7 @@ USER_ID=${LOCAL_USER_ID:-9001}
 export HOME=/home/user
 echo "Starting with UID : $USER_ID"
 
-if [ ! -d "$HOME/.zshrc" ]; then
+if [ ! -f "$HOME/.zshrc" ]; then
   useradd --shell /bin/zsh -u $USER_ID -o -c "" -m user
   cd $HOME
   # oh my zsh
