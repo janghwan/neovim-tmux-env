@@ -10,6 +10,7 @@ echo "Starting with UID : $USER_ID"
 
 if [ ! -f "$HOME/.zshrc" ]; then
   useradd --shell /bin/zsh -u $USER_ID -o -c "" -m user
+  adduser user docker
   cd $HOME
   # oh my zsh
   # copy dotfiles
