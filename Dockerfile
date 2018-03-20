@@ -34,7 +34,6 @@ RUN apt-get update && apt-get install -y \
 RUN chsh -s /usr/bin/zsh
 
 # ohmyzsh
-#RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 # Install docker
@@ -79,21 +78,13 @@ RUN apt-get install -y \
       python3 \
       python3-pip \
       unzip \
-      php
+      php-dev \
+      php-pear 
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
-
-#RUN pip3 install --upgrade pip &&\ 
-#    pip3 install --user neovim jedi mistune psutil setproctitle
-#WORKDIR /usr/local/src
-#RUN git clone --depth 1 https://github.com/neovim/neovim.git
-#WORKDIR /usr/local/src/neovim
-#RUN git fetch --depth 1 origin tag v0.2.1
-#RUN git reset --hard v0.2.1
-#RUN make CMAKE_BUILD_TYPE=RelWithDebInfo
-#RUN make install
-#RUN rm -rf /usr/local/src/neovim
+# for phpcd vim plugin
+RUN pecl install msgpack
 
 # nvm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
