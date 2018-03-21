@@ -10,7 +10,9 @@ echo "Starting with UID : $USER_ID"
 
 if [ ! -f "$HOME/.zshrc" ]; then
   useradd --shell /bin/zsh -u $USER_ID -o -c "" -m user
+  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
   adduser user docker
+  adduser user sudo
   cd $HOME
   # oh my zsh
   # copy dotfiles

@@ -13,6 +13,7 @@ ENV TERM=xterm-256color-italic
 # Common packages
 RUN apt-get update && apt-get install -y \
       build-essential \
+      sudo \
       curl \
       git  \
       iputils-ping \
