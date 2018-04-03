@@ -80,12 +80,12 @@ RUN apt-get install -y \
       python3-pip \
       unzip \
       php-dev \
-      php-pear 
+      php-pear \
+      php-msgpack
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 # for phpcd vim plugin
-RUN pecl install msgpack
 
 # nvm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
